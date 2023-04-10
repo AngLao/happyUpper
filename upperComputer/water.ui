@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>water</class>
+ <widget class="QWidget" name="water">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1091</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>60</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>前进</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>左转</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>170</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>右转</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>310</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>后退</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>70</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>上升</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>300</y>
+     <width>150</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>下降</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/test.css</file>
+        <file>Icon/boxin.ico</file>
+        <file>Icon/bx.ico</file>
+        <file>Icon/close.ico</file>
+        <file>Icon/data.ico</file>
+        <file>Icon/message.ico</file>
+        <file>Icon/ser.ico</file>
+        <file>Icon/small.ico</file>
+        <file>Icon/tell.ico</file>
+        <file>Icon/txxy.ico</file>
+        <file>Icon/user.ico</file>
+        <file>qss/test/add_bottom.png</file>
+        <file>qss/test/add_left.png</file>
+        <file>qss/test/add_right.png</file>
+        <file>qss/test/add_top.png</file>
+        <file>qss/test/branch_close.png</file>
+        <file>qss/test/branch_open.png</file>
+        <file>qss/test/calendar_nextmonth.png</file>
+        <file>qss/test/calendar_prevmonth.png</file>
+        <file>qss/test/checkbox_checked.png</file>
+        <file>qss/test/checkbox_checked_disable.png</file>
+        <file>qss/test/checkbox_parcial.png</file>
+        <file>qss/test/checkbox_parcial_disable.png</file>
+        <file>qss/test/checkbox_unchecked.png</file>
+        <file>qss/test/checkbox_unchecked_disable.png</file>
+        <file>qss/test/radiobutton_checked.png</file>
+        <file>qss/test/radiobutton_checked_disable.png</file>
+        <file>qss/test/radiobutton_unchecked.png</file>
+        <file>qss/test/radiobutton_unchecked_disable.png</file>
+        <file>sheet/ANO_XIEYI.pdf</file>
+    </qresource>
+</RCC>
