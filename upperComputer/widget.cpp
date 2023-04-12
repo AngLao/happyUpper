@@ -26,36 +26,6 @@ int main(int argc, char *argv[])
 }
 
 
-/*---------------------------------------------------------
- * 封装！
- * 在uiinit类里面实现控件放置与布局
- * 在module类里面实现功能
- * 将槽函数尽量用lambda表达式减少耦合
- * 加入Json解析
- *
- * 22/10/2
- * 从数据流中解析数据的速度太慢,10ms一帧基本吃满单线程 （串口配置界面textedit文本堆积导致刷新缓慢?）
- *                                               (加上时间戳线程占用大大降低)
- *                                               原因是insertPlainText函数会将之前积累的文本再次刷新,
- *                                               更换成append解决问题,修改后1ms1帧刚好占满单线程
- * 增加串口数据显示textedit到一点大小时清空内存功能
- * 问：单次发送数据过多会导致内存积累？（关闭串口后清空）(问题初步定位：串口定时器)
- *                                                (原因串口缓冲区未清除读取速度跟不上写速度,等待内存会释放)
- *                                                (虚拟串口助手取消精确波特率模拟即可快速读写,电脑读取缓存速度远大于自定义这些波特率)
- * 22/10/3
- * 串口接收数据刷新textedit耗时间过长,1000帧占满线程占用cpu13%,同比匿名cpu占用1%
- * 关闭textedit显示后cpu占用不足0.5%
- *
- * 优化dataview刷新方式,1000帧/s下cpu占用从2.5%降至1%
- *
- * 22/10/4frameView显示数据方式由Textedit改为tabelwidget
- * 匿名上位机数据帧显示错误? 44332211显示为11223344
- *
- * 22/10/5
- * 加入定时器定时刷新显示数据
- * 解决波形刷新卡顿问题，完善波形控制按钮 1000帧20条波形不卡顿
- * 未解决问题Tabelwidget刷新太慢，占用太高，内置数据解析和显示未添加
----------------------------------------------------------*/
 Widget::Widget(QWidget *parent) : QWidget(parent)
 {
     this->resize(940, 450);
@@ -73,6 +43,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     frameView* frameView = new class frameView();
     userConfView* userConfView = new  class userConfView();
     waveformView* waveformView = new class waveformView();
+    debugView* debugView = new class debugView();
     //    networkView* networkView = new class networkView();
 
     m_pStackedWidget->addWidget(serialConf);
@@ -80,10 +51,10 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     m_pStackedWidget->addWidget(frameView->widget());
     m_pStackedWidget->addWidget(userConfView->widget());
     m_pStackedWidget->addWidget(waveformView->widget());
+    m_pStackedWidget->addWidget(debugView->widget());
     //    m_pStackedWidget->addWidget(networkView->widget());
 
-    m_pStackedWidget->setCurrentIndex(5);
-    qssInit(":/qss/test.css");
+    m_pStackedWidget->setCurrentIndex(0);
 
     //串口读取数据通过信号发送给qAgreement类解析出原始帧数据
     connect(serialConf, &win1::DatatoCRC_signal,pqAgreement,&qAgreement::analysis);
@@ -94,10 +65,13 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     connect(userConfView, &userConfView::refreshDataView,dataView,&dataView::refreshUserView);
     connect(userConfView, &userConfView::refreshPrint,waveformView,&waveformView::paintUserData);
 
+    //配置数据发送链接
+    connect(debugView, &debugView::sendPackData,serialConf,&win1::sendsingleData);
 
+
+    //    qssInit(":/qss/test.css");
 }
 
-Widget::~Widget(){}
 
 void Widget::startWindowInit(void){
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
@@ -189,16 +163,10 @@ void Widget::startWindowInit(void){
         });
         static QToolButton* sendCmd = buttonInit("网络通讯",":/Icon/message.ico");
         connect(sendCmd ,&QPushButton::clicked,this,[this]() {
-            m_pStackedWidget->setCurrentIndex(5);
         });
-        static QToolButton* protocolManual = buttonInit("协议手册",":/Icon/txxy.ico");
-        connect(protocolManual ,&QPushButton::clicked,this,[=]() {
-            bool res = QDesktopServices::openUrl(QUrl::fromLocalFile("qrc:/sheet/ANO_XIEYI.pdf"));
-
-            if(!res){
-                QMessageBox::information(this,"waring","未找到手册文件");
-            }
-            //            QProcess::execute("explorer :/sheet/ANO_XIEYI.pdf");
+        static QToolButton* debugManual = buttonInit("参数配置",":/Icon/txxy.ico");
+        connect(debugManual ,&QPushButton::clicked,this,[=]() {
+            m_pStackedWidget->setCurrentIndex(5);
         });
         static QToolButton* beSmall = buttonInit("隐藏窗口",":/Icon/small.ico");
         connect(beSmall ,&QPushButton::clicked,this,[=]() {

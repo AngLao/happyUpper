@@ -34,6 +34,8 @@ public:
     QString data;
     long long int recCount = 0;
     long long int sendCount = 0;
+
+    void sendsingleData(const char *data);
 private slots:
     void findSerialPort();
     void OpenSerialPortSlot();
