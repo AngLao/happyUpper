@@ -21,7 +21,7 @@ win1::win1(QWidget *parent) :
     QObject::connect( ui->SendDataPeriodCheckBox,&QCheckBox::stateChanged,this, &win1::SendDataPeriodSlot );
 
     /*设置串口初始化的控件默认状态*/
-    ui->BaudRateComboBox->setCurrentIndex(15);      /*默认波特率115200*/
+    ui->BaudRateComboBox->setCurrentIndex(13);      /*默认波特率115200*/
     ui->SendDataPushButton->setEnabled(false);      /*失能串口发送按键*/
     ui->SendDataPeriodCheckBox->setEnabled(false);  /*未打开串口前不能设置自动发送*/
     ui->SendDataPeriodLineEdit->setEnabled(false);  /*未打开串口前不能设置自动发送时间*/
@@ -45,6 +45,7 @@ win1::win1(QWidget *parent) :
     refreshTimer->setTimerType(Qt::PreciseTimer);
     refreshTimer->start(1000/30);
 
+    SerialPort = new QSerialPort();
     findSerialPort();
 
 }
@@ -52,6 +53,17 @@ win1::win1(QWidget *parent) :
 win1::~win1()
 {
     delete ui;
+}
+
+void win1::sendsingleData(const char *data)
+{
+
+    if(SerialPort->isOpen()){
+        SerialPort->write(data,1);/*发送数据*/
+    }else{
+        qDebug()<<"SerialPort error";
+    }
+
 }
 
 void win1::findSerialPort()
@@ -75,7 +87,6 @@ void win1::OpenSerialPortSlot()
 
     if(ui->OpenSerialPortPushButton->text() == "打开串口")
     {
-        SerialPort = new QSerialPort();
 
         QSerialPort::DataBits PortDataBits = QSerialPort::Data8;                /*数据位，默认Data8*/
         QSerialPort::Parity PortParityBits = QSerialPort::NoParity;             /*校验位，默认NoParity*/

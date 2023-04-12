@@ -174,6 +174,24 @@ private:
 
 };
 
+//------------------------debugView----------------
+class debugView : public QObject{
+    Q_OBJECT
+public:
+    explicit debugView();
+    ~debugView(){};
+
+    QWidget* widget();
+    QWidget* addCtrBlock();
+    QWidget* addConfBlock();
+
+
+signals:
+    void sendPackData(const char *data);;
+private:
+    QWidget* debugViewWidget;
+};
+
 
 //------------------------networkView----------------
 class networkView : public QObject{

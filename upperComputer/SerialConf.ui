@@ -91,10 +91,13 @@
            <bool>false</bool>
           </property>
           <property name="lineWrapMode">
-           <enum>QTextEdit::FixedPixelWidth</enum>
+           <enum>QTextEdit::WidgetWidth</enum>
           </property>
           <property name="lineWrapColumnOrWidth">
            <number>1888</number>
+          </property>
+          <property name="tabStopDistance">
+           <double>40.000000000000000</double>
           </property>
          </widget>
         </item>

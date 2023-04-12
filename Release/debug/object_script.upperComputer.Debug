@@ -1,0 +1,17 @@
+debug/SerialConf.o
+debug/panelwidget.o
+debug/module.o
+debug/tcpclient.o
+debug/tcpserver.o
+debug/uiinit.o
+debug/water.o
+debug/widget.o
+debug/qrc_main.o
+debug/moc_SerialConf.o
+debug/moc_panelwidget.o
+debug/moc_module.o
+debug/moc_tcpclient.o
+debug/moc_tcpserver.o
+debug/moc_uiinit.o
+debug/moc_water.o
+debug/moc_widget.o
