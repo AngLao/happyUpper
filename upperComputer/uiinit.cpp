@@ -1202,6 +1202,10 @@ QWidget* debugView::addConfBlock()
     sendConfButton->setSizePolicy(sizePolicy);
     sendConfButton->setText("全部发送");
 
+    //功能未完善
+    readConfButton->setDisabled(true);
+    saveConfButton->setDisabled(true);
+    sendConfButton->setDisabled(true);
     //主布局设置
     QFrame *mainFrame = new QFrame();
     QVBoxLayout* mainLayout = new QVBoxLayout(mainFrame);

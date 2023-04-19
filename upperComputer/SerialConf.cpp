@@ -60,6 +60,7 @@ void win1::sendsingleData(const char *data)
 
     if(SerialPort->isOpen()){
         SerialPort->write(data,1);/*发送数据*/
+        sendCount+=1;
     }else{
         qDebug()<<"SerialPort error";
     }
@@ -226,10 +227,8 @@ void win1::DataReadyReadSlot()
             data += "["+NowTime.toString("hh:mm:ss:zzz")+"]:";
         }
         data += QString::fromLocal8Bit(SerialPortDataBuf);
-        data += "\n";
     }else{
         data += SerialPortDataBuf.toHex(' ').toUpper();
-        data += "\n";
     }
 
     if(!data.isEmpty()){
@@ -250,9 +249,9 @@ void win1::DataReadyReadSlot()
         if(ui->RxDataTextEdit->toPlainText().size()>500000){
             ui->RxDataTextEdit->clear();
         }
+
         //保持编辑器光标在最后一行
-        cursorPosition.movePosition(QTextCursor::End);
-        ui->RxDataTextEdit->setTextCursor(cursorPosition);
+        ui->RxDataTextEdit->moveCursor(QTextCursor::End);
     }
 
 

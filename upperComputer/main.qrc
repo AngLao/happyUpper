@@ -29,6 +29,5 @@
         <file>qss/test/radiobutton_checked_disable.png</file>
         <file>qss/test/radiobutton_unchecked.png</file>
         <file>qss/test/radiobutton_unchecked_disable.png</file>
-        <file>sheet/ANO_XIEYI.pdf</file>
     </qresource>
 </RCC>

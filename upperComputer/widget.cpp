@@ -1,12 +1,12 @@
 #include "widget.h"
-#include "SerialConf.h"
 #include "ui_SerialConf.h"
-#include "uiinit.h"
-#include "module.h"
 #include <QApplication>
 #include <QTextEdit>
 #include <QToolButton>
 
+#include "SerialConf.h"
+#include "uiinit.h"
+#include "module.h"
 #include "network/networkHeader.h"
 
 //主函数入口
