@@ -1,0 +1,16 @@
+release/SerialConf.o
+release/easyProtocol.o
+release/panelwidget.o
+release/module.o
+release/tcpclient.o
+release/tcpserver.o
+release/uiinit.o
+release/widget.o
+release/qrc_main.o
+release/moc_SerialConf.o
+release/moc_panelwidget.o
+release/moc_module.o
+release/moc_tcpclient.o
+release/moc_tcpserver.o
+release/moc_uiinit.o
+release/moc_widget.o
