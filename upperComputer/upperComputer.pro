@@ -10,20 +10,20 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
 SOURCES += \
-    SerialConf.cpp \
+    SerialPortBase.cpp \
+    analyse.cpp \
     extend/easyProtocol.c \
     extend/panelwidget.cpp \
-    module.cpp \
     network/tcpclient.cpp \
     network/tcpserver.cpp \
     uiinit.cpp \
     widget.cpp
 
 HEADERS += \
-    SerialConf.h \
+    SerialPortBase.h \
+    analyse.h \
     extend/easyProtocol.h \
     extend/panelwidget.h \
-    module.h \
     network/networkHeader.h \
     network/tcpclient.h \
     network/tcpserver.h \
@@ -31,7 +31,7 @@ HEADERS += \
     widget.h
 
 FORMS += \
-    SerialConf.ui
+    SerialPortBase.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

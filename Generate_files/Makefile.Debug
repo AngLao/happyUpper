@@ -1947,53 +1947,7 @@ debug/SerialConf.o: ../upperComputer/SerialConf.cpp ../upperComputer/SerialConf.
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qrubberband.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qframe.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qabstractitemmodel.h \
-		ui_SerialConf.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QVariant \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QApplication \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qapplication.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qcoreapplication.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qeventloop.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qfuture.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qfutureinterface.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qmutex.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qresultstore.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qfuture_impl.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qthreadpool.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qthread.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qrunnable.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qexception.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qpromise.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qguiapplication.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qinputmethod.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QCheckBox \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcheckbox.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QFrame \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qboxlayout.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlayout.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlayoutitem.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLabel \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpicture.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLineEdit \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlineedit.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextformat.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpen.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextoption.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QPushButton \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QTextEdit \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtextedit.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_SerialConf.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\SerialConf.o ..\upperComputer\SerialConf.cpp
 
 debug/easyProtocol.o: ../upperComputer/extend/easyProtocol.c ../upperComputer/extend/easyProtocol.h
@@ -3625,7 +3579,6 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qgridlayout.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QWidget \
 		ui_SerialConf.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QVariant \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QApplication \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qapplication.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qcoreapplication.h \
@@ -3647,37 +3600,16 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qinputmethod.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qlocale.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QCheckBox \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcheckbox.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QComboBox \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcombobox.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qstyleoption.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qvalidator.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qregularexpression.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qslider.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractslider.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qstyle.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtabbar.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qrubberband.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QFrame \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QHBoxLayout \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLabel \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpicture.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLineEdit \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlineedit.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextformat.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpen.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QTextEdit \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtextedit.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextoption.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextcursor.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qtextformat.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpen.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QToolButton \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtoolbutton.h \
 		../upperComputer/SerialConf.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/QMouseEvent \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtSerialPort/QSerialPort \
@@ -3695,8 +3627,20 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QTimer \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qtimer.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qbasictimer.h \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QToolButton \
-		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtoolbutton.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QComboBox \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcombobox.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qvalidator.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qregularexpression.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qslider.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qstyle.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtabbar.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qrubberband.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/qabstractitemmodel.h \
 		../upperComputer/uiinit.h \
 		../upperComputer/module.h \
 		../upperComputer/qcustomplot.h \
@@ -3887,6 +3831,7 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/QPaintDevice \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpaintengine.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpdfwriter.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpicture.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qpixmapcache.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/qrasterwindow.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/QPaintDeviceWindow \
@@ -3915,6 +3860,7 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/QActionGroup \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qbuttongroup.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcalendarwidget.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcheckbox.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcolordialog.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcolormap.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qcolumnview.h \
@@ -3959,9 +3905,11 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qgroupbox.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qheaderview.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qinputdialog.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlineedit.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qitemdelegate.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qitemeditorfactory.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qkeysequenceedit.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlabel.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlcdnumber.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlistview.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qlistwidget.h \
@@ -3982,6 +3930,7 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QScrollerProperties \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qscrollerproperties.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QMetaType \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QVariant \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qshortcut.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtGui/QShortcut \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/qsizegrip.h \
@@ -4024,6 +3973,7 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtPrintSupport/qtprintsupportversion.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QElapsedTimer \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QTimeZone \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLabel \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtCore/QLine \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QTabWidget \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QTableWidget \
@@ -4038,6 +3988,7 @@ debug/widget.o: ../upperComputer/widget.cpp ../upperComputer/widget.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtNetwork/qabstractsocket.h \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtNetwork/qhostaddress.h \
+		../../../../Work/QT/6.3.2/mingw_64/include/QtWidgets/QLineEdit \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../Work/QT/6.3.2/mingw_64/include/QtNetwork/qtcpsocket.h \
 		../upperComputer/network/tcpserver.h

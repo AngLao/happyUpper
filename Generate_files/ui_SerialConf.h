@@ -21,11 +21,11 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include <SerialConf.h>
+#include <SerialPortBase.h>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_win1
+class Ui_SerialPortBase
 {
 public:
     QHBoxLayout *horizontalLayout_11;
@@ -69,24 +69,24 @@ public:
     QCheckBox *SendDataForHexCheckBox;
     QCheckBox *SendDataWithEnterCheckBox;
 
-    void setupUi(QWidget *win1)
+    void setupUi(QWidget *SerialPortBase)
     {
-        if (win1->objectName().isEmpty())
-            win1->setObjectName(QString::fromUtf8("win1"));
-        win1->resize(953, 518);
+        if (SerialPortBase->objectName().isEmpty())
+            SerialPortBase->setObjectName(QString::fromUtf8("SerialPortBase"));
+        SerialPortBase->resize(953, 518);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(win1->sizePolicy().hasHeightForWidth());
-        win1->setSizePolicy(sizePolicy);
-        win1->setSizeIncrement(QSize(0, 0));
-        win1->setBaseSize(QSize(0, 0));
-        win1->setStyleSheet(QString::fromUtf8(""));
-        horizontalLayout_11 = new QHBoxLayout(win1);
+        sizePolicy.setHeightForWidth(SerialPortBase->sizePolicy().hasHeightForWidth());
+        SerialPortBase->setSizePolicy(sizePolicy);
+        SerialPortBase->setSizeIncrement(QSize(0, 0));
+        SerialPortBase->setBaseSize(QSize(0, 0));
+        SerialPortBase->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_11 = new QHBoxLayout(SerialPortBase);
         horizontalLayout_11->setSpacing(0);
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
         horizontalLayout_11->setContentsMargins(0, 0, 0, 0);
-        frame = new QFrame(win1);
+        frame = new QFrame(SerialPortBase);
         frame->setObjectName(QString::fromUtf8("frame"));
         sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy);
@@ -99,7 +99,8 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         RxDataTextEdit = new QTextEdit(frame);
         RxDataTextEdit->setObjectName(QString::fromUtf8("RxDataTextEdit"));
-        RxDataTextEdit->setAutoFillBackground(true);
+        RxDataTextEdit->setAutoFillBackground(false);
+        RxDataTextEdit->setStyleSheet(QString::fromUtf8(" font:12pt \"\346\245\267\344\275\223\";"));
         RxDataTextEdit->setAutoFormatting(QTextEdit::AutoBulletList);
         RxDataTextEdit->setUndoRedoEnabled(false);
         RxDataTextEdit->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -166,6 +167,7 @@ public:
         BaudRateComboBox->setObjectName(QString::fromUtf8("BaudRateComboBox"));
         BaudRateComboBox->setMinimumSize(QSize(80, 22));
         BaudRateComboBox->setMaximumSize(QSize(80, 22));
+        BaudRateComboBox->setEditable(true);
 
         horizontalLayout->addWidget(BaudRateComboBox);
 
@@ -227,6 +229,8 @@ public:
         horizontalLayout_4->addWidget(label_3);
 
         PortParityComboBox = new QComboBox(frame);
+        PortParityComboBox->addItem(QString());
+        PortParityComboBox->addItem(QString());
         PortParityComboBox->addItem(QString());
         PortParityComboBox->addItem(QString());
         PortParityComboBox->addItem(QString());
@@ -319,6 +323,7 @@ public:
 
         SendDataPeriodCheckBox = new QCheckBox(frame);
         SendDataPeriodCheckBox->setObjectName(QString::fromUtf8("SendDataPeriodCheckBox"));
+        SendDataPeriodCheckBox->setEnabled(false);
         SendDataPeriodCheckBox->setMinimumSize(QSize(165, 25));
         SendDataPeriodCheckBox->setMaximumSize(QSize(999, 999));
 
@@ -345,6 +350,7 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         SendDataForHexCheckBox = new QCheckBox(frame);
         SendDataForHexCheckBox->setObjectName(QString::fromUtf8("SendDataForHexCheckBox"));
+        SendDataForHexCheckBox->setEnabled(false);
         SendDataForHexCheckBox->setMinimumSize(QSize(80, 22));
         SendDataForHexCheckBox->setChecked(true);
 
@@ -352,6 +358,7 @@ public:
 
         SendDataWithEnterCheckBox = new QCheckBox(frame);
         SendDataWithEnterCheckBox->setObjectName(QString::fromUtf8("SendDataWithEnterCheckBox"));
+        SendDataWithEnterCheckBox->setEnabled(false);
         SendDataWithEnterCheckBox->setMinimumSize(QSize(80, 22));
         SendDataWithEnterCheckBox->setMaximumSize(QSize(80, 22));
 
@@ -369,68 +376,73 @@ public:
         horizontalLayout_11->addWidget(frame);
 
 
-        retranslateUi(win1);
+        retranslateUi(SerialPortBase);
 
-        QMetaObject::connectSlotsByName(win1);
+        BaudRateComboBox->setCurrentIndex(13);
+
+
+        QMetaObject::connectSlotsByName(SerialPortBase);
     } // setupUi
 
-    void retranslateUi(QWidget *win1)
+    void retranslateUi(QWidget *SerialPortBase)
     {
-        win1->setWindowTitle(QCoreApplication::translate("win1", "Form", nullptr));
-        label->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\344\270\262\345\217\243\351\200\211\346\213\251</span></p></body></html>", nullptr));
-        label_2->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\263\242\347\211\271\347\216\207</span></p></body></html>", nullptr));
-        BaudRateComboBox->setItemText(0, QCoreApplication::translate("win1", "110", nullptr));
-        BaudRateComboBox->setItemText(1, QCoreApplication::translate("win1", "300", nullptr));
-        BaudRateComboBox->setItemText(2, QCoreApplication::translate("win1", "600", nullptr));
-        BaudRateComboBox->setItemText(3, QCoreApplication::translate("win1", "1200", nullptr));
-        BaudRateComboBox->setItemText(4, QCoreApplication::translate("win1", "2400", nullptr));
-        BaudRateComboBox->setItemText(5, QCoreApplication::translate("win1", "4800", nullptr));
-        BaudRateComboBox->setItemText(6, QCoreApplication::translate("win1", "9600", nullptr));
-        BaudRateComboBox->setItemText(7, QCoreApplication::translate("win1", "14400", nullptr));
-        BaudRateComboBox->setItemText(8, QCoreApplication::translate("win1", "19200", nullptr));
-        BaudRateComboBox->setItemText(9, QCoreApplication::translate("win1", "38400", nullptr));
-        BaudRateComboBox->setItemText(10, QCoreApplication::translate("win1", "43000", nullptr));
-        BaudRateComboBox->setItemText(11, QCoreApplication::translate("win1", "57600", nullptr));
-        BaudRateComboBox->setItemText(12, QCoreApplication::translate("win1", "76800", nullptr));
-        BaudRateComboBox->setItemText(13, QCoreApplication::translate("win1", "115200", nullptr));
-        BaudRateComboBox->setItemText(14, QCoreApplication::translate("win1", "500000", nullptr));
-        BaudRateComboBox->setItemText(15, QCoreApplication::translate("win1", "921600", nullptr));
+        SerialPortBase->setWindowTitle(QCoreApplication::translate("SerialPortBase", "Form", nullptr));
+        label->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\344\270\262\345\217\243\351\200\211\346\213\251</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\263\242\347\211\271\347\216\207</span></p></body></html>", nullptr));
+        BaudRateComboBox->setItemText(0, QCoreApplication::translate("SerialPortBase", "110", nullptr));
+        BaudRateComboBox->setItemText(1, QCoreApplication::translate("SerialPortBase", "300", nullptr));
+        BaudRateComboBox->setItemText(2, QCoreApplication::translate("SerialPortBase", "600", nullptr));
+        BaudRateComboBox->setItemText(3, QCoreApplication::translate("SerialPortBase", "1200", nullptr));
+        BaudRateComboBox->setItemText(4, QCoreApplication::translate("SerialPortBase", "2400", nullptr));
+        BaudRateComboBox->setItemText(5, QCoreApplication::translate("SerialPortBase", "4800", nullptr));
+        BaudRateComboBox->setItemText(6, QCoreApplication::translate("SerialPortBase", "9600", nullptr));
+        BaudRateComboBox->setItemText(7, QCoreApplication::translate("SerialPortBase", "14400", nullptr));
+        BaudRateComboBox->setItemText(8, QCoreApplication::translate("SerialPortBase", "19200", nullptr));
+        BaudRateComboBox->setItemText(9, QCoreApplication::translate("SerialPortBase", "38400", nullptr));
+        BaudRateComboBox->setItemText(10, QCoreApplication::translate("SerialPortBase", "43000", nullptr));
+        BaudRateComboBox->setItemText(11, QCoreApplication::translate("SerialPortBase", "57600", nullptr));
+        BaudRateComboBox->setItemText(12, QCoreApplication::translate("SerialPortBase", "76800", nullptr));
+        BaudRateComboBox->setItemText(13, QCoreApplication::translate("SerialPortBase", "115200", nullptr));
+        BaudRateComboBox->setItemText(14, QCoreApplication::translate("SerialPortBase", "460800", nullptr));
+        BaudRateComboBox->setItemText(15, QCoreApplication::translate("SerialPortBase", "921600", nullptr));
 
-        label_4->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\345\201\234\346\255\242\344\275\215</span></p></body></html>", nullptr));
-        PortStopBitsComboBox->setItemText(0, QCoreApplication::translate("win1", "1", nullptr));
-        PortStopBitsComboBox->setItemText(1, QCoreApplication::translate("win1", "1.5", nullptr));
-        PortStopBitsComboBox->setItemText(2, QCoreApplication::translate("win1", "2", nullptr));
+        label_4->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\345\201\234\346\255\242\344\275\215</span></p></body></html>", nullptr));
+        PortStopBitsComboBox->setItemText(0, QCoreApplication::translate("SerialPortBase", "1", nullptr));
+        PortStopBitsComboBox->setItemText(1, QCoreApplication::translate("SerialPortBase", "2", nullptr));
+        PortStopBitsComboBox->setItemText(2, QCoreApplication::translate("SerialPortBase", "1.5", nullptr));
 
-        label_5->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\225\260\346\215\256\344\275\215</span></p></body></html>", nullptr));
-        PortDataBitsComboBox->setItemText(0, QCoreApplication::translate("win1", "8", nullptr));
-        PortDataBitsComboBox->setItemText(1, QCoreApplication::translate("win1", "7", nullptr));
-        PortDataBitsComboBox->setItemText(2, QCoreApplication::translate("win1", "6", nullptr));
-        PortDataBitsComboBox->setItemText(3, QCoreApplication::translate("win1", "5", nullptr));
+        label_5->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\225\260\346\215\256\344\275\215</span></p></body></html>", nullptr));
+        PortDataBitsComboBox->setItemText(0, QCoreApplication::translate("SerialPortBase", "8", nullptr));
+        PortDataBitsComboBox->setItemText(1, QCoreApplication::translate("SerialPortBase", "7", nullptr));
+        PortDataBitsComboBox->setItemText(2, QCoreApplication::translate("SerialPortBase", "6", nullptr));
+        PortDataBitsComboBox->setItemText(3, QCoreApplication::translate("SerialPortBase", "5", nullptr));
 
-        label_3->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\240\241\351\252\214\344\275\215</span></p></body></html>", nullptr));
-        PortParityComboBox->setItemText(0, QCoreApplication::translate("win1", "\346\227\240\346\240\241\351\252\214", nullptr));
-        PortParityComboBox->setItemText(1, QCoreApplication::translate("win1", "\345\245\207\346\240\241\351\252\214", nullptr));
-        PortParityComboBox->setItemText(2, QCoreApplication::translate("win1", "\345\201\266\346\240\241\351\252\214", nullptr));
+        label_3->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\346\240\241\351\252\214\344\275\215</span></p></body></html>", nullptr));
+        PortParityComboBox->setItemText(0, QCoreApplication::translate("SerialPortBase", "\346\227\240\346\240\241\351\252\214", nullptr));
+        PortParityComboBox->setItemText(1, QCoreApplication::translate("SerialPortBase", "EvenParity ", nullptr));
+        PortParityComboBox->setItemText(2, QCoreApplication::translate("SerialPortBase", "OddParity ", nullptr));
+        PortParityComboBox->setItemText(3, QCoreApplication::translate("SerialPortBase", "SpaceParity ", nullptr));
+        PortParityComboBox->setItemText(4, QCoreApplication::translate("SerialPortBase", "MarkParity ", nullptr));
 
-        label_6->setText(QCoreApplication::translate("win1", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\344\270\262\345\217\243\346\223\215\344\275\234</span></p></body></html>", nullptr));
-        OpenSerialPortPushButton->setText(QCoreApplication::translate("win1", "\346\211\223\345\274\200\344\270\262\345\217\243", nullptr));
-        RxDataForHexCheckBox->setText(QCoreApplication::translate("win1", "Hex\346\230\276\347\244\272", nullptr));
-        RxDataWithTimeCheckBox->setText(QCoreApplication::translate("win1", "\346\227\266\351\227\264\346\210\263", nullptr));
-        RxDataSavePushButton->setText(QCoreApplication::translate("win1", "\344\277\235\345\255\230\344\270\262\345\217\243", nullptr));
-        RxDataTextClearPushButton->setText(QCoreApplication::translate("win1", "\346\270\205\351\231\244\346\216\245\346\224\266", nullptr));
-        SendDataTextClearPushButton->setText(QCoreApplication::translate("win1", "\346\270\205\351\231\244\345\217\221\351\200\201", nullptr));
-        SendDataPushButton->setText(QCoreApplication::translate("win1", "\345\217\221\351\200\201", nullptr));
-        SendDataPeriodCheckBox->setText(QCoreApplication::translate("win1", "\345\256\232\346\227\266\345\217\221\351\200\201", nullptr));
-        label_7->setText(QCoreApplication::translate("win1", "\345\217\221\351\200\201\345\221\250\346\234\237(ms)\357\274\232", nullptr));
-        SendDataPeriodLineEdit->setText(QCoreApplication::translate("win1", "100", nullptr));
-        SendDataForHexCheckBox->setText(QCoreApplication::translate("win1", "Hex\345\217\221\351\200\201", nullptr));
-        SendDataWithEnterCheckBox->setText(QCoreApplication::translate("win1", "\345\217\221\351\200\201\345\233\236\350\275\246", nullptr));
+        label_6->setText(QCoreApplication::translate("SerialPortBase", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">\344\270\262\345\217\243\346\223\215\344\275\234</span></p></body></html>", nullptr));
+        OpenSerialPortPushButton->setText(QCoreApplication::translate("SerialPortBase", "\346\211\223\345\274\200\344\270\262\345\217\243", nullptr));
+        RxDataForHexCheckBox->setText(QCoreApplication::translate("SerialPortBase", "Hex\346\230\276\347\244\272", nullptr));
+        RxDataWithTimeCheckBox->setText(QCoreApplication::translate("SerialPortBase", "\346\227\266\351\227\264\346\210\263", nullptr));
+        RxDataSavePushButton->setText(QCoreApplication::translate("SerialPortBase", "\344\277\235\345\255\230\344\270\262\345\217\243", nullptr));
+        RxDataTextClearPushButton->setText(QCoreApplication::translate("SerialPortBase", "\346\270\205\351\231\244\346\216\245\346\224\266", nullptr));
+        SendDataTextClearPushButton->setText(QCoreApplication::translate("SerialPortBase", "\346\270\205\351\231\244\345\217\221\351\200\201", nullptr));
+        SendDataPushButton->setText(QCoreApplication::translate("SerialPortBase", "\345\217\221\351\200\201", nullptr));
+        SendDataPeriodCheckBox->setText(QCoreApplication::translate("SerialPortBase", "\345\256\232\346\227\266\345\217\221\351\200\201", nullptr));
+        label_7->setText(QCoreApplication::translate("SerialPortBase", "\345\217\221\351\200\201\345\221\250\346\234\237(ms)\357\274\232", nullptr));
+        SendDataPeriodLineEdit->setText(QCoreApplication::translate("SerialPortBase", "100", nullptr));
+        SendDataForHexCheckBox->setText(QCoreApplication::translate("SerialPortBase", "Hex\345\217\221\351\200\201", nullptr));
+        SendDataWithEnterCheckBox->setText(QCoreApplication::translate("SerialPortBase", "\345\217\221\351\200\201\345\233\236\350\275\246", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class win1: public Ui_win1 {};
+    class SerialPortBase: public Ui_SerialPortBase {};
 } // namespace Ui
 
 QT_END_NAMESPACE

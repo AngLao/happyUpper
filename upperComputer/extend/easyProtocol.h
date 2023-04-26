@@ -26,7 +26,7 @@ typedef unsigned int        uint32_t;
 #define high_first_out              2
 //----------ÓÃ»§ÅäÖÃ----------
 
-#define user_en                     0
+#define user_en                     1
 #if (user_en == 1)
 #include "usart.h"
 #endif
@@ -80,7 +80,6 @@ typedef enum {
 
 uint8_t easy_parse_data(const uint8_t new_data, frame_t* frame);
 uint16_t easy_read_frame_name(frame_t* frame);
-
 
 
 #ifdef __cplusplus

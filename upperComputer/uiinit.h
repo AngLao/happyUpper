@@ -1,7 +1,7 @@
 #ifndef UIINIT_H
 #define UIINIT_H
 
-#include "module.h"
+#include "analyse.h"
 #include "qcustomplot.h"
 #include <QObject>
 #include <QLabel>

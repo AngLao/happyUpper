@@ -8,24 +8,9 @@ void hardwork_send(frame_t *p_Frame, uint8_t length)
 {
     uint8_t* p_data =  (uint8_t*)p_Frame ;
 #if (user_en == 1)
-    //发送帧数据
-    for (int i = 0; ; i++) {
-        USART1->DR=*(p_data+i);
-        while((USART1->SR&0X40)==0);//等待发送结束
 
-        if(i == length + 3)
-        {
-            uint8_t check_hight = p_Frame->check >>8;
-            uint8_t check_low = p_Frame->check ;
-                //发送帧校验
-            USART1->DR=check_hight;;
-            while((USART1->SR&0X40)==0);//等待发送结束
-            USART1->DR=check_low;;
-            while((USART1->SR&0X40)==0);//等待发送结束
-            //一帧数据发送完成
-            break;
-        }
-    }
+
+    SerialPortBase::sendsingleData(const char *data)
 #endif
 }
 

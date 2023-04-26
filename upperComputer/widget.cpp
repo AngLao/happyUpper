@@ -1,12 +1,12 @@
 #include "widget.h"
-#include "ui_SerialConf.h"
+#include "ui_SerialPortBase.h"
 #include <QApplication>
 #include <QTextEdit>
 #include <QToolButton>
 
-#include "SerialConf.h"
+#include "SerialPortBase.h"
 #include "uiinit.h"
-#include "module.h"
+#include "analyse.h"
 #include "network/networkHeader.h"
 
 //主函数入口
@@ -38,7 +38,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     //生成解析串口数据流方法类
     pqAgreement = new qAgreement();
     //添加自定义界面
-    win1* serialConf = new win1(this);
+    SerialPortBase* serialConf = new SerialPortBase(this);
     dataView* dataView = new class dataView();
     frameView* frameView = new class frameView();
     userConfView* userConfView = new  class userConfView();
@@ -56,17 +56,17 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
 
     m_pStackedWidget->setCurrentIndex(0);
 
-    //串口读取数据通过信号发送给qAgreement类解析出原始帧数据
-    connect(serialConf, &win1::DatatoCRC_signal,pqAgreement,&qAgreement::analysis);
-    //原始帧数据通过信号发送给userConfView类按相应配置进行解析
-    connect(pqAgreement, &qAgreement::frameQuoteSignal,userConfView,&userConfView::combinationUserData);
-    //解析完成的最终结果发送到进行显示
-    //    connect(userConfView, &userConfView::showframe,frameView,&frameView::addItem);
-    connect(userConfView, &userConfView::refreshDataView,dataView,&dataView::refreshUserView);
-    connect(userConfView, &userConfView::refreshPrint,waveformView,&waveformView::paintUserData);
+//    //串口读取数据通过信号发送给qAgreement类解析出原始帧数据
+//    connect(serialConf, &win1::DatatoCRC_signal,pqAgreement,&qAgreement::analysis);
+//    //原始帧数据通过信号发送给userConfView类按相应配置进行解析
+//    connect(pqAgreement, &qAgreement::frameQuoteSignal,userConfView,&userConfView::combinationUserData);
+//    //解析完成的最终结果发送到进行显示
+//    //    connect(userConfView, &userConfView::showframe,frameView,&frameView::addItem);
+//    connect(userConfView, &userConfView::refreshDataView,dataView,&dataView::refreshUserView);
+//    connect(userConfView, &userConfView::refreshPrint,waveformView,&waveformView::paintUserData);
 
     //配置数据发送链接
-    connect(debugView, &debugView::sendPackData,serialConf,&win1::sendsingleData);
+    connect(debugView, &debugView::sendPackData,serialConf,&SerialPortBase::sendsingleData);
 
 
     //    qssInit(":/qss/test.css");
