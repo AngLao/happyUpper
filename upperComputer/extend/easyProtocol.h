@@ -26,7 +26,7 @@ typedef unsigned int        uint32_t;
 #define high_first_out              2
 //----------ÓÃ»§ÅäÖÃ----------
 
-#define user_en                     1
+#define user_en                     0
 #if (user_en == 1)
 #include "usart.h"
 #endif

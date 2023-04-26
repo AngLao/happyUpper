@@ -651,7 +651,7 @@ void userConfView::readDataConf()
 }
 
 //用户自定义帧解析方法组合数据
-void userConfView::combinationUserData(qAgreement &mframe)
+void userConfView::combinationUserData(void *mframe)
 {
     qDebug()<<"combinationUserData()";
 
@@ -703,22 +703,33 @@ void userConfView::combinationUserData(qAgreement &mframe)
         return result ;
     };
     //是否为用户自定义数据帧?
-    if(mframe.Id()<0xF0){
-        return ;
-    }
+//    if(mframe.Id()<0xF0){
+//        return ;
+//    }
 
     //保存帧描述
-    uesrFinalFrame.head=mframe.Head();
-    uesrFinalFrame.addr=mframe.Addr();
-    uesrFinalFrame.id=mframe.Id();
+    uesrFinalFrame.head=0;
+    uesrFinalFrame.addr=0;
+    uesrFinalFrame.id=0;
 
-    uesrFinalFrame.ac=mframe.Ac();
-    uesrFinalFrame.sc=mframe.Sc();
+    uesrFinalFrame.ac=0;
+    uesrFinalFrame.sc=0;
+
+    int lenindex = 0;
+    unsigned char* pBuf ;
+
+//    uesrFinalFrame.head=mframe.Head();
+//    uesrFinalFrame.addr=mframe.Addr();
+//    uesrFinalFrame.id=mframe.Id();
+
+//    uesrFinalFrame.ac=mframe.Ac();
+//    uesrFinalFrame.sc=mframe.Sc();
+
+//    int lenindex = mframe.Len() ;
+//    unsigned char* pBuf = mframe.DataPoint() ;
     //根据配置解析数据
     unsigned char idindex = uesrFinalFrame.id-0xF1; //对应的功能帧索引
     qDebug("idindex res:%d", idindex);
-    int lenindex = mframe.Len() ;
-    unsigned char* pBuf = mframe.DataPoint() ;
     unsigned int bufIndex = 0 ;
 
     for(int i = 0 ; i<10 ; i++){
@@ -760,7 +771,7 @@ void userConfView::combinationUserData(qAgreement &mframe)
     }
 
     //最终解析帧转成通过信号发送到tablewifget显示
-    emit showframe(&uesrFinalFrame, mframe.Len() );
+    emit showframe(&uesrFinalFrame, 0);
     //刷新UI显示值
     refreshView();
 

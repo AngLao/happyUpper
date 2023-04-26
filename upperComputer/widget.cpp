@@ -35,8 +35,6 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
 
     //主窗口初始化
     startWindowInit();
-    //生成解析串口数据流方法类
-    pqAgreement = new qAgreement();
     //添加自定义界面
     SerialPortBase* serialConf = new SerialPortBase(this);
     dataView* dataView = new class dataView();

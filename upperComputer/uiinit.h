@@ -119,7 +119,7 @@ public:
 
     void readUserConf();
     void readDataConf();
-    void combinationUserData(qAgreement &mframe);
+    void combinationUserData(void *mframe);
     void refreshView();
 signals:
 
