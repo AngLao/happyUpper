@@ -1096,29 +1096,23 @@ QWidget* debugView::addCtrBlock()
         hs_set->setValue(sb_set->value());
         //发送数据
         auto text = le_name->text().toUtf8();
-        int16_t name = int(text.at(0))<<8 | int(text.at(1));
         uint32_t data = sb_set->text().toUInt();
 
-#define packLength 4
-        frame_t *pSendPack =  easy_pack_data_byName(name, data , 4);
-        //发送帧数据
-        for (int i = 0; ; i++) {
+        static frame_t senbuf;
+        easy_set_header(&senbuf, 0x66);
+        easy_set_address(&senbuf, int(text.at(0)));
+        easy_set_id(&senbuf, int(text.at(1)));
 
-            char data =  *((char*)pSendPack+i);
-            qDebug()<<"data:"<< data;
-            emit sendPackData( &data );
-            if(i == packLength + 3)
-            {
-                //发送帧校验高8位
-                data = (pSendPack->check) >>8 ;
-                qDebug()<<"data:"<< data;
-                emit sendPackData(  &data  );
-                data = (pSendPack->check)  ;
-                qDebug()<<"data:"<< data;
-                emit sendPackData( &data );
-                //一帧数据发送完成
-                break;
-            }
+        easy_wipe_data(&senbuf);
+        easy_add_data(&senbuf, data, 4);
+        easy_add_data(&senbuf, data, 2);
+        easy_add_check(&senbuf);
+        //发送帧数据
+        uint8_t len = easy_return_buflen(&senbuf);
+        qDebug()<<len;
+        qDebug()<<data;
+        for (int i = 0; i<len ; i++) {
+            emit sendPackData((char*)&senbuf+i );
         }
     });
 
@@ -1188,7 +1182,7 @@ QWidget* debugView::addConfBlock()
     QLabel *lab_header = new QLabel("header:");
     QLabel *lab_checkmodel = new QLabel("checkmodel:");
 
-    QLineEdit *le_header = new QLineEdit(QString::number(FRAME_HEADER));
+    QLineEdit *le_header = new QLineEdit(QString::number(REC_HEADER));
     le_header->setDisabled(true);
     QLineEdit *le_checkmodel = new QLineEdit(QString::number(check_model));
     le_checkmodel->setDisabled(true);
