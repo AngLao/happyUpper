@@ -1,5 +1,5 @@
 release/SerialPortBase.o
-release/easyProtocol.o
+release/EasyPact.o
 release/panelwidget.o
 release/tcpclient.o
 release/tcpserver.o

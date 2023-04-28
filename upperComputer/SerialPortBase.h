@@ -14,7 +14,7 @@
 #include <QMouseEvent>
 #include <QTextEdit>
 
-#include "extend/easyProtocol.h"
+#include "extend/EasyPact.h"
 
 namespace Ui {
 class SerialPortBase;

@@ -1,5 +1,5 @@
 #include "uiinit.h"
-#include "extend/easyProtocol.h"
+#include "extend/EasyPact.h".h"
 #include "extend/panelwidget.h"
 #include "qcombobox.h"
 #include <QCheckBox>

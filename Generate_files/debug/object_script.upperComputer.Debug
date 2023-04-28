@@ -1,5 +1,5 @@
 debug/SerialPortBase.o
-debug/easyProtocol.o
+debug/EasyPact.o
 debug/panelwidget.o
 debug/tcpclient.o
 debug/tcpserver.o

@@ -11,7 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     SerialPortBase.cpp \
-    extend/easyProtocol.c \
+    extend/EasyPact.c \
     extend/panelwidget.cpp \
     network/tcpclient.cpp \
     network/tcpserver.cpp \
@@ -20,7 +20,7 @@ SOURCES += \
 
 HEADERS += \
     SerialPortBase.h \
-    extend/easyProtocol.h \
+    extend/EasyPact.h \
     extend/panelwidget.h \
     network/networkHeader.h \
     network/tcpclient.h \
