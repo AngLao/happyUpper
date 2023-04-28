@@ -7,13 +7,14 @@ uint8_t transfer_model = high_first_out;
  * @brief 解析帧数据
  * @param new_data 新的数据
  * @param frame 存储解析后的帧数据
- * @return 解析成功返回 true，否则返回 false
+ * @return 解析成功返回 0，否则返回 1
  */
-uint8_t easy_parse_data(const uint8_t new_data, frame_t* frame)
+uint8_t easy_parse_data(frame_t** frame,const uint8_t new_data)
 {
-    static parse_state_t	parse_state = HEADER;
+    static parse_state_t	    parse_state = HEADER;
     static uint8_t 			 	data_index  = 0;
     static frame_t 			 	current_frame ;  // 静态变量存储当前帧的状态和数据
+    static uint8_t* 			p_frame = (uint8_t*)&current_frame ;  // 一个用于操作帧数据的指针,使用uint8_t类型逐位操作
 
     uint8_t parse_fail  = 1;
 
@@ -21,57 +22,63 @@ uint8_t easy_parse_data(const uint8_t new_data, frame_t* frame)
     case HEADER: {
         // 等待帧头的第一个字节
         if (new_data == REC_HEADER) {
-            current_frame.header = new_data;
+            *(p_frame+HEADER) = new_data;
             parse_state = ADDRESS;
         }
         break;
     }
     case ADDRESS: {
         // 等待地址字节
-        current_frame.address = new_data;
+        *(p_frame+ADDRESS) = new_data;
         parse_state = ID;
         break;
     }
     case ID: {
         // 等待 ID 字节
-        current_frame.id = new_data;
+        *(p_frame+ID) = new_data;
         parse_state = DATA_LENGTH;
         break;
     }
     case DATA_LENGTH: {
         // 等待数据长度字节
-        current_frame.data_length = new_data;
-        if (current_frame.data_length > MAX_DATA_LENGTH) {
+        *(p_frame+DATA_LENGTH) = new_data;
+        if (*(p_frame+DATA_LENGTH) > MAX_DATA_LENGTH) {
             //数据长度超出范围，重置解析状态
             parse_state = HEADER;
         } else {
+            //接收索引归零
             data_index = 0;
-            parse_state = (current_frame.data_length > 0) ? DATA : CHECK_HIGH;
+            //没有要接收的数据直接接收检验码
+            parse_state = (*(p_frame+DATA_LENGTH) > 0) ? DATA : CHECK_HIGH;
         }
         break;
     }
     case DATA: {
         // 等待数据字节
-        current_frame.data[data_index++] = new_data;
-        if (data_index == current_frame.data_length) {
+        *(p_frame+DATA+data_index) = new_data;
+        data_index++;
+        //接受数据长度符合待收数据长度
+        if (data_index == *(p_frame+DATA_LENGTH)) {
             // 数据接收完毕，进入下一步状态
             parse_state = CHECK_HIGH;
         }
         break;
     }
     case CHECK_HIGH: {
-        // 等待校验码高位字节
-        current_frame.check = (uint16_t)new_data<<8 ;
+        // 等待校验码高位字节 数据后第一位即为校验码高字节
+        *(p_frame+DATA+data_index) = new_data  ;
+
         parse_state = CHECK_LOW;
         break;
     }
     case CHECK_LOW: {
-        // 等待校验码低位字节
-        current_frame.check += new_data;
-        const uint16_t checksum = calculate_check(&current_frame,current_frame.data_length);
-        if (checksum ==  current_frame.check){
+        // 等待校验码低位字节 数据后第二位即为校验码高字节
+        *(p_frame+DATA+data_index+1) = new_data;
+        uint16_t checksum = calculate_check(&current_frame,*(p_frame+DATA_LENGTH)+4);
+        uint16_t this_checksum = ((uint16_t)*(p_frame+DATA+data_index)<<8)+*(p_frame+DATA+data_index+1);
+        if (this_checksum == checksum){
             // 校验码匹配，解析成功
-            *frame =  current_frame;
+            *frame =  &current_frame;
             parse_fail = 0;
         }
         parse_state = HEADER;

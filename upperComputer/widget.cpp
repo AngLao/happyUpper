@@ -54,8 +54,6 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
 
     m_pStackedWidget->setCurrentIndex(0);
 
-//    //串口读取数据通过信号发送给qAgreement类解析出原始帧数据
-//    connect(serialConf, &win1::DatatoCRC_signal,pqAgreement,&qAgreement::analysis);
 //    //原始帧数据通过信号发送给userConfView类按相应配置进行解析
 //    connect(pqAgreement, &qAgreement::frameQuoteSignal,userConfView,&userConfView::combinationUserData);
 //    //解析完成的最终结果发送到进行显示
@@ -64,7 +62,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
 //    connect(userConfView, &userConfView::refreshPrint,waveformView,&waveformView::paintUserData);
 
     //配置数据发送链接
-    connect(debugView, &debugView::sendPackData,serialConf,&SerialPortBase::sendsingleData);
+    connect(debugView, &debugView::sendPackData,serialConf,&SerialPortBase::SendData);
 
 
     //    qssInit(":/qss/test.css");

@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../../upperComputer/SerialPortBase.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,12 +23,17 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SerialPortBase_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[20];
     char stringdata0[15];
     char stringdata1[10];
     char stringdata2[1];
     char stringdata3[12];
     char stringdata4[12];
+    char stringdata5[11];
+    char stringdata6[9];
+    char stringdata7[6];
+    char stringdata8[8];
+    char stringdata9[4];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_SerialPortBase_t::offsetsAndSizes) + ofs), len 
@@ -37,13 +43,23 @@ static const qt_meta_stringdata_SerialPortBase_t qt_meta_stringdata_SerialPortBa
         QT_MOC_LITERAL(15, 9),  // "DataReady"
         QT_MOC_LITERAL(25, 0),  // ""
         QT_MOC_LITERAL(26, 11),  // "QByteArray&"
-        QT_MOC_LITERAL(38, 11)   // "ReceiveData"
+        QT_MOC_LITERAL(38, 11),  // "ReceiveData"
+        QT_MOC_LITERAL(50, 10),  // "RecivePact"
+        QT_MOC_LITERAL(61, 8),  // "uint8_t*"
+        QT_MOC_LITERAL(70, 5),  // "pData"
+        QT_MOC_LITERAL(76, 7),  // "uint8_t"
+        QT_MOC_LITERAL(84, 3)   // "len"
     },
     "SerialPortBase",
     "DataReady",
     "",
     "QByteArray&",
-    "ReceiveData"
+    "ReceiveData",
+    "RecivePact",
+    "uint8_t*",
+    "pData",
+    "uint8_t",
+    "len"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,18 +69,20 @@ static const uint qt_meta_data_SerialPortBase[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x06,    1 /* Public */,
+       1,    1,   26,    2, 0x06,    1 /* Public */,
+       5,    2,   29,    2, 0x06,    3 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 8,    7,    9,
 
        0        // eod
 };
@@ -76,6 +94,7 @@ void SerialPortBase::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         (void)_t;
         switch (_id) {
         case 0: _t->DataReady((*reinterpret_cast< std::add_pointer_t<QByteArray&>>(_a[1]))); break;
+        case 1: _t->RecivePact((*reinterpret_cast< std::add_pointer_t<uint8_t*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<uint8_t>>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -84,6 +103,13 @@ void SerialPortBase::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
             using _t = void (SerialPortBase::*)(QByteArray & );
             if (_t _q_method = &SerialPortBase::DataReady; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (SerialPortBase::*)(uint8_t * , uint8_t );
+            if (_t _q_method = &SerialPortBase::RecivePact; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
                 return;
             }
         }
@@ -97,7 +123,7 @@ const QMetaObject SerialPortBase::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_SerialPortBase_t
-, QtPrivate::TypeAndForceComplete<SerialPortBase, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray &, std::false_type>
+, QtPrivate::TypeAndForceComplete<SerialPortBase, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<uint8_t *, std::false_type>, QtPrivate::TypeAndForceComplete<uint8_t, std::false_type>
 
 
 
@@ -125,13 +151,13 @@ int SerialPortBase::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -141,6 +167,13 @@ void SerialPortBase::DataReady(QByteArray & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void SerialPortBase::RecivePact(uint8_t * _t1, uint8_t _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 struct qt_meta_stringdata_MyComboBox_t {
     uint offsetsAndSizes[6];

@@ -105,6 +105,7 @@ public:
         RxDataTextEdit->setUndoRedoEnabled(false);
         RxDataTextEdit->setLineWrapMode(QTextEdit::WidgetWidth);
         RxDataTextEdit->setLineWrapColumnOrWidth(1888);
+        RxDataTextEdit->setReadOnly(true);
         RxDataTextEdit->setTabStopDistance(40.000000000000000);
 
         verticalLayout->addWidget(RxDataTextEdit);
@@ -116,7 +117,7 @@ public:
 
         verticalLayout->addWidget(TxDataTextEdit);
 
-        verticalLayout->setStretch(0, 4);
+        verticalLayout->setStretch(0, 9);
         verticalLayout->setStretch(1, 1);
 
         horizontalLayout_12->addLayout(verticalLayout);
@@ -350,7 +351,7 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         SendDataForHexCheckBox = new QCheckBox(frame);
         SendDataForHexCheckBox->setObjectName(QString::fromUtf8("SendDataForHexCheckBox"));
-        SendDataForHexCheckBox->setEnabled(false);
+        SendDataForHexCheckBox->setEnabled(true);
         SendDataForHexCheckBox->setMinimumSize(QSize(80, 22));
         SendDataForHexCheckBox->setChecked(true);
 
@@ -358,7 +359,7 @@ public:
 
         SendDataWithEnterCheckBox = new QCheckBox(frame);
         SendDataWithEnterCheckBox->setObjectName(QString::fromUtf8("SendDataWithEnterCheckBox"));
-        SendDataWithEnterCheckBox->setEnabled(false);
+        SendDataWithEnterCheckBox->setEnabled(true);
         SendDataWithEnterCheckBox->setMinimumSize(QSize(80, 22));
         SendDataWithEnterCheckBox->setMaximumSize(QSize(80, 22));
 

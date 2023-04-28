@@ -32,9 +32,8 @@ typedef struct {
     uint8_t address;        // 地址
     uint8_t id;             // ID
     uint8_t data_length;    // 数据长度
-    uint16_t check;         // 帧校验
-
     uint8_t data[MAX_DATA_LENGTH];  // 数据
+    // 帧校验添加到数据末尾
 } frame_t;
 
 
@@ -65,7 +64,7 @@ typedef enum {
 
 uint8_t  easy_return_buflen(frame_t* p_Frame);
 uint16_t easy_return_name(frame_t* p_Frame);
-uint8_t  easy_parse_data(const uint8_t new_data, frame_t* frame);
+uint8_t easy_parse_data(frame_t** frame,const uint8_t new_data);
 
 
 #ifdef __cplusplus

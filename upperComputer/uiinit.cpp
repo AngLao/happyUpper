@@ -1099,7 +1099,7 @@ QWidget* debugView::addCtrBlock()
         uint32_t data = sb_set->text().toUInt();
 
         static frame_t senbuf;
-        easy_set_header(&senbuf, 0x66);
+        easy_set_header(&senbuf, 0xAA);
         easy_set_address(&senbuf, int(text.at(0)));
         easy_set_id(&senbuf, int(text.at(1)));
 
@@ -1111,9 +1111,8 @@ QWidget* debugView::addCtrBlock()
         uint8_t len = easy_return_buflen(&senbuf);
         qDebug()<<len;
         qDebug()<<data;
-        for (int i = 0; i<len ; i++) {
-            emit sendPackData((char*)&senbuf+i );
-        }
+
+        emit sendPackData((char*)&senbuf ,easy_return_buflen(&senbuf));
     });
 
     //地址ID改变时响应

@@ -1,5 +1,4 @@
 release/SerialPortBase.o
-release/analyse.o
 release/easyProtocol.o
 release/panelwidget.o
 release/tcpclient.o
@@ -8,7 +7,6 @@ release/uiinit.o
 release/widget.o
 release/qrc_main.o
 release/moc_SerialPortBase.o
-release/moc_analyse.o
 release/moc_panelwidget.o
 release/moc_tcpclient.o
 release/moc_tcpserver.o

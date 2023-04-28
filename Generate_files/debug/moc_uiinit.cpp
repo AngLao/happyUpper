@@ -485,12 +485,13 @@ int waveformView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_debugView_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[12];
     char stringdata0[10];
     char stringdata1[13];
     char stringdata2[1];
     char stringdata3[12];
     char stringdata4[5];
+    char stringdata5[8];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_debugView_t::offsetsAndSizes) + ofs), len 
@@ -500,13 +501,15 @@ static const qt_meta_stringdata_debugView_t qt_meta_stringdata_debugView = {
         QT_MOC_LITERAL(10, 12),  // "sendPackData"
         QT_MOC_LITERAL(23, 0),  // ""
         QT_MOC_LITERAL(24, 11),  // "const char*"
-        QT_MOC_LITERAL(36, 4)   // "data"
+        QT_MOC_LITERAL(36, 4),  // "data"
+        QT_MOC_LITERAL(41, 7)   // "DataLen"
     },
     "debugView",
     "sendPackData",
     "",
     "const char*",
-    "data"
+    "data",
+    "DataLen"
 };
 #undef QT_MOC_LITERAL
 
@@ -524,10 +527,10 @@ static const uint qt_meta_data_debugView[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x06,    1 /* Public */,
+       1,    2,   20,    2, 0x06,    1 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, 0x80000000 | 3, QMetaType::Int,    4,    5,
 
        0        // eod
 };
@@ -538,13 +541,13 @@ void debugView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         auto *_t = static_cast<debugView *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->sendPackData((*reinterpret_cast< std::add_pointer_t<const char*>>(_a[1]))); break;
+        case 0: _t->sendPackData((*reinterpret_cast< std::add_pointer_t<const char*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (debugView::*)(const char * );
+            using _t = void (debugView::*)(const char * , const int );
             if (_t _q_method = &debugView::sendPackData; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -560,7 +563,7 @@ const QMetaObject debugView::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_debugView_t
-, QtPrivate::TypeAndForceComplete<debugView, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const char *, std::false_type>
+, QtPrivate::TypeAndForceComplete<debugView, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const char *, std::false_type>, QtPrivate::TypeAndForceComplete<const int, std::false_type>
 
 
 
@@ -600,9 +603,9 @@ int debugView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void debugView::sendPackData(const char * _t1)
+void debugView::sendPackData(const char * _t1, const int _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_networkView_t {

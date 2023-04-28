@@ -12,8 +12,9 @@
 #include <QTimer>
 #include <QComboBox>
 #include <QMouseEvent>
+#include <QTextEdit>
 
-
+#include "extend/easyProtocol.h"
 
 namespace Ui {
 class SerialPortBase;
@@ -28,7 +29,8 @@ public:
     explicit SerialPortBase(QWidget *parent = nullptr);
     ~SerialPortBase(){delete ui;};
 
-    void sendsingleData(const char *data);
+
+    void SendData(const char *data , const int DataLen );
 private:
     QSerialPort *SerialPort;
 
@@ -36,11 +38,11 @@ private:
     long long int sendCount = 0;
 
     void OpenSerialPort();
-    /*串口数据接收槽函数*/
-    void DisplayData();
+    void DataPreprocessing();
 
 signals:
     void DataReady(QByteArray& ReceiveData);
+    void RecivePact(uint8_t* pData , uint8_t len);
 };
 
 class MyComboBox : public QComboBox

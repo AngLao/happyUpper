@@ -187,7 +187,7 @@ public:
 
 
 signals:
-    void sendPackData(const char *data);;
+    void sendPackData(const char *data , const int DataLen);;
 private:
     QWidget* debugViewWidget;
 };

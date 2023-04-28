@@ -1,5 +1,4 @@
 debug/SerialPortBase.o
-debug/analyse.o
 debug/easyProtocol.o
 debug/panelwidget.o
 debug/tcpclient.o
@@ -8,7 +7,6 @@ debug/uiinit.o
 debug/widget.o
 debug/qrc_main.o
 debug/moc_SerialPortBase.o
-debug/moc_analyse.o
 debug/moc_panelwidget.o
 debug/moc_tcpclient.o
 debug/moc_tcpserver.o
