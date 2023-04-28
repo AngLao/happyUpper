@@ -1,13 +1,12 @@
 #include "widget.h"
-#include "ui_SerialPortBase.h"
 #include <QApplication>
 #include <QTextEdit>
 #include <QToolButton>
 
-#include "SerialPortBase.h"
 #include "uiinit.h"
-#include "analyse.h"
-#include "network/networkHeader.h"
+#include "SerialPortBase.h"
+#include "WaveformDisplay.h"
+#include "ParameterConfiguration.h"
 
 //主函数入口
 int main(int argc, char *argv[])
@@ -15,12 +14,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Widget w;
     w.show();
-
-    //    //test
-    //    tcpserver server ;
-    //    server.show();
-    //    tcpclient client ;
-    //    client.show();
 
     return a.exec();
 }
@@ -36,33 +29,32 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     //主窗口初始化
     startWindowInit();
     //添加自定义界面
-    SerialPortBase* serialConf = new SerialPortBase(this);
+    SerialPortBase* SerialPortBase = new class SerialPortBase(this);
     dataView* dataView = new class dataView();
     frameView* frameView = new class frameView();
     userConfView* userConfView = new  class userConfView();
-    waveformView* waveformView = new class waveformView();
-    debugView* debugView = new class debugView();
-    //    networkView* networkView = new class networkView();
-
-    m_pStackedWidget->addWidget(serialConf);
+    WaveformDisplay* WaveformDisplay = new class WaveformDisplay();
+    ParameterConfiguration* ParameterConfiguration = new class ParameterConfiguration();
+    m_pStackedWidget->addWidget(SerialPortBase);
     m_pStackedWidget->addWidget(dataView->widget());
     m_pStackedWidget->addWidget(frameView->widget());
     m_pStackedWidget->addWidget(userConfView->widget());
-    m_pStackedWidget->addWidget(waveformView->widget());
-    m_pStackedWidget->addWidget(debugView->widget());
-    //    m_pStackedWidget->addWidget(networkView->widget());
+//    m_pStackedWidget->addWidget(WaveformDisplay->widget());
+//    m_pStackedWidget->addWidget(ParameterConfiguration->widget());
+    WaveformDisplay->widget()->show();
+    ParameterConfiguration->widget()->show();
 
     m_pStackedWidget->setCurrentIndex(0);
-
 //    //原始帧数据通过信号发送给userConfView类按相应配置进行解析
 //    connect(pqAgreement, &qAgreement::frameQuoteSignal,userConfView,&userConfView::combinationUserData);
 //    //解析完成的最终结果发送到进行显示
-//    //    connect(userConfView, &userConfView::showframe,frameView,&frameView::addItem);
+//    connect(userConfView, &userConfView::showframe,frameView,&frameView::addItem);
 //    connect(userConfView, &userConfView::refreshDataView,dataView,&dataView::refreshUserView);
-//    connect(userConfView, &userConfView::refreshPrint,waveformView,&waveformView::paintUserData);
 
     //配置数据发送链接
-    connect(debugView, &debugView::sendPackData,serialConf,&SerialPortBase::SendData);
+    connect(ParameterConfiguration, &ParameterConfiguration::sendPackData,SerialPortBase,&SerialPortBase::SendData);
+    //显示波形
+    connect(SerialPortBase, &SerialPortBase::drawWaveform, WaveformDisplay, &WaveformDisplay::ProcessingMessages);
 
 
     //    qssInit(":/qss/test.css");

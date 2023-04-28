@@ -46,4 +46,7 @@ want to make a uppercomputer to debug hardwork
 
  * 23/4/28
    修改了接受协议的实现,采用EasyPact
+   新增根据EasyPact协议发送(uint)数据到指定地址id即可显示相应波形
+   优化工程结构
+   删除network等未使用代码
 ---------------------------------------------------------*/

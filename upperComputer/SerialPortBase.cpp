@@ -1,4 +1,5 @@
 #include "SerialPortBase.h"
+#include "extend/EasyPact.h"
 #include "ui_SerialPortBase.h"
 
 SerialPortBase::SerialPortBase(QWidget *parent) :
@@ -216,17 +217,15 @@ void SerialPortBase::DataPreprocessing()
     //解析是否存在自定义协议数据
     frame_t* pFrame = nullptr;
     for (int var = 0; var < SerialPortDataBuf.size(); ++var) {
-        //解析到数据帧
         uint8_t res = easy_parse_data(&pFrame,(uint8_t)SerialPortDataBuf.at(var) );
-        qDebug()<<res;
+        //解析到数据帧
         if( res == 0){
             uint8_t len = easy_return_buflen(pFrame);
-            emit RecivePact((uint8_t*)pFrame , len);
-
-            qDebug()<<"res:";
-            //qDebug
-            for (int var = 0; var < len; ++var) {
-                qDebug()<<*((uint8_t*)pFrame+var);
+            //广播收到的数据  : 数据地址 , 数据长度
+//            emit RecivePact((uint8_t*)pFrame , len);
+            qDebug()<<pFrame->address;
+            if(pFrame->address == 'W'){
+              emit drawWaveform((uint8_t*)pFrame , len);
             }
         }
     }

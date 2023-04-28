@@ -14,7 +14,6 @@
 #include <QMouseEvent>
 #include <QTextEdit>
 
-#include "extend/EasyPact.h"
 
 namespace Ui {
 class SerialPortBase;
@@ -27,7 +26,7 @@ class SerialPortBase : public QWidget
 public:
     Ui::SerialPortBase *ui;
     explicit SerialPortBase(QWidget *parent = nullptr);
-    ~SerialPortBase(){delete ui;};
+    ~SerialPortBase(){};
 
 
     void SendData(const char *data , const int DataLen );
@@ -42,14 +41,15 @@ private:
 
 signals:
     void DataReady(QByteArray& ReceiveData);
-    void RecivePact(uint8_t* pData , uint8_t len);
+    void RecivePact(uint8_t* pData  ,uint8_t len);
+    void drawWaveform(uint8_t*pData ,uint8_t len);
 };
 
 class MyComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    explicit MyComboBox(QWidget *parent = 0){};
+    explicit MyComboBox(QWidget *parent = nullptr){};
     ~MyComboBox(){};
 protected:
     virtual void mousePressEvent(QMouseEvent *e);  //添加鼠标点击事件

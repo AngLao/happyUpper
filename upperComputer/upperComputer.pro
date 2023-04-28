@@ -10,21 +10,21 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
 SOURCES += \
+    ParameterConfiguration.cpp \
     SerialPortBase.cpp \
+    WaveformDisplay.cpp \
     extend/EasyPact.c \
     extend/panelwidget.cpp \
-    network/tcpclient.cpp \
-    network/tcpserver.cpp \
     uiinit.cpp \
     widget.cpp
 
 HEADERS += \
+    ParameterConfiguration.h \
     SerialPortBase.h \
+    WaveformDisplay.h \
     extend/EasyPact.h \
     extend/panelwidget.h \
     network/networkHeader.h \
-    network/tcpclient.h \
-    network/tcpserver.h \
     uiinit.h \
     widget.h
 
